@@ -1,6 +1,4 @@
-# Changelog
-
-## [Unreleased] — 2026-05-28
+# Cursor Changelog
 
 ### Fixed
 
