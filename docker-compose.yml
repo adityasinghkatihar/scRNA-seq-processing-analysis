@@ -1,0 +1,31 @@
+# docker-compose.yml
+# Local development — runs API + dashboard as separate services sharing a volume
+
+services:
+
+  api:
+    build: .
+    container_name: scrna_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - scrna_outputs:/tmp/scrna_outputs
+      - .:/app        # live-reload: code changes reflect without rebuild
+    environment:
+      - OUTPUT_DIR=/tmp/scrna_outputs
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+
+  dashboard:
+    build: .
+    container_name: scrna_dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - scrna_outputs:/tmp/scrna_outputs
+      - .:/app
+    environment:
+      - OUTPUT_DIR=/tmp/scrna_outputs
+    command: streamlit run dashboard/app.py --server.port 8501 --server.address 0.0.0.0
+
+volumes:
+  scrna_outputs:
