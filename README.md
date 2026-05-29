@@ -3,6 +3,20 @@
 scRNA-seq preprocessing and analysis service.
 Standalone repo. Outputs `.h5ad` consumed by velocity and GRN repos.
 
+## Development Notes
+
+```
+This pipeline was developed as a portfolio project to demonstrate practical competence in single-cell bioinformatics
+infrastructure. It was built with AI coding assistance (Anthropic Claude) and validated end-to-end on the 10x
+PBMC3k dataset. Cursor and OpenAI ChatGPT were used to accelerate implementation of boilerplate and to assist
+in debugging specific issues.
+All biological decisions (pipeline order, QC thresholds, Wilcoxon for DEG testing, raw count preservation for GRN
+compatibility, celltypist majority voting configuration), architectural decisions (AnnData as data contract, async job
+model, JSON serialisation of pathway results), and validation (UMAP and cluster review, bug diagnosis, unit
+testing) were performed independently.
+See AI_Use_Decleration.md for the full AI use declaration.
+```
+
 ## Repository layout
 
 ```
